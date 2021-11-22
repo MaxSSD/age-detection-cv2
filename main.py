@@ -1,3 +1,6 @@
+# @MaxSSD
+# 13371337
+
 import cv2
 import math
 import argparse
@@ -75,7 +78,6 @@ def DisplayVid():
             cv2.putText(frameFace, label, (bbox[0], bbox[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 2,
                         cv2.LINE_AA)
         cv2.imshow("Age-Gender", frameFace)
-        k = cv2.waitKey(1)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
