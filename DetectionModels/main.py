@@ -52,9 +52,6 @@ def faceBox(faceNet, frames):
 
 def DisplayVid():
     cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
-    fourcc = cv2.VideoWriter_fourcc(*'XVID')
-    out = cv2.VideoWriter('output.avi', fourcc, 60.0, (640, 480))
-
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
 
@@ -62,7 +59,6 @@ def DisplayVid():
         ret, frame = cap.read()
         frameFace, bboxes = faceBox(faceNet, frame)
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        out.write(frame)
 
         for bbox in bboxes:
             face = frame[bbox[1]:bbox[3], bbox[0]:bbox[2]]
@@ -89,7 +85,6 @@ def DisplayVid():
             print("Could not open video device")
 
     cap.release()
-    out.release()
     cv2.destroyAllWindows()
 
 DisplayVid()
